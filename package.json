@@ -9,6 +9,8 @@
   "dependencies": {
     "colors": "^1.2.4",
     "commander": "^2.15.1",
-    "inquirer": "^5.2.0"
+    "inquirer": "^5.2.0",
+    "lowdb": "^1.0.0",
+    "password-generator": "^2.2.0"
   }
 }

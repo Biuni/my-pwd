@@ -37,7 +37,7 @@ program
 program
   .command('list')
   .description('')
-  .action(list())
+  .action(type => list(type))
 
 program
   .command('read <nick>')
@@ -60,8 +60,8 @@ program
   .action(nick => remove(nick))
 
 program
-  .command('update <nick>')
+  .command('update <nick> <field> <value>')
   .description('')
-  .action(nick => update(nick))
+  .action((nick, field, value) => update(nick, field, value))
 
 program.parse(process.argv)

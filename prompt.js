@@ -1,3 +1,5 @@
+const db = require('./db')
+
 const createPrompt = [
   {
     type: 'input',
@@ -11,20 +13,25 @@ const createPrompt = [
   },
   {
     type: 'input',
-    name: 'password',
+    name: 'pwd',
     message: 'Enter password: '
   },
   {
     type: 'input',
-    name: 'identifier',
-    message: 'Enter identifier: '
+    name: 'id',
+    message: 'Enter identifier: ',
+    validate: function (value) {
+      var valid = !value.match(/\s/)
+      return valid || 'No blank space'
+    }
   },
   {
-    type: 'input',
+    type: 'list',
     name: 'group',
-    message: 'Enter group: '
+    message: 'Enter group: ',
+    choices: db.get('groups').value()
   }
-];
+]
 
 module.exports = {
   createPrompt
