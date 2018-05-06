@@ -1,0 +1,14 @@
+{
+  "name": "my-pwd",
+  "version": "1.0.0",
+  "description": "Easy and secure way to store your password.",
+  "main": "index.js",
+  "author": "Gianluca Bonifazi (http://biuni.it)",
+  "license": "MIT",
+  "private": false,
+  "dependencies": {
+    "colors": "^1.2.4",
+    "commander": "^2.15.1",
+    "inquirer": "^5.2.0"
+  }
+}
