@@ -9,19 +9,40 @@ const login = (pwd) => {
 
 // Create new Record
 const create = (record) => {
-  db.get('records')
-    .push({
-      id: record.id,
-      email: record.email,
-      pwd: record.pwd,
-      username: record.username,
-      group: record.group
-    })
-    .write()
+  var checkExist = db.get('records')
+    .find({ id: record.id })
+    .value()
+
+  if (checkExist === undefined) {
+    db.get('records')
+      .push({
+        id: record.id,
+        email: record.email,
+        pwd: record.pwd,
+        username: record.username,
+        group: record.group
+      })
+      .write()
+      console.log(`\nAll right!`.green)
+  } else {
+    console.log(`\nError! Change the identifier.!`.red)
+  }
 }
 
+// Print the list of Records
 const list = () => {
-  console.log('list')
+  const groups = db.get('groups').value()
+  console.log()
+  groups.forEach(name => {
+    console.log(` ${name.green}`)
+    let val = db.get('records')
+      .filter({ group: name })
+      .sortBy('id')
+      .value()
+      val.forEach(record => {
+        console.log(`  └── ${record.id.cyan}`)
+      })
+  })
 }
 
 const read = () => {
