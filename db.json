@@ -3,91 +3,13 @@
     {
       "id": "example-record",
       "email": "mail@gmail.com",
-      "pwd": "178bd7822465",
+      "pwd": "c96ead30125788f43269f7a52d582747",
       "username": "example",
       "group": "Personal"
-    },
-    {
-      "id": "ciao-test",
-      "email": "test@test.com",
-      "pwd": "test2",
-      "username": "test",
-      "group": "Business"
-    },
-    {
-      "id": "ciao-test1",
-      "email": "test@test.com",
-      "pwd": "test2",
-      "username": "test",
-      "group": "Business"
-    },
-    {
-      "id": "ciao-test2",
-      "email": "test@test.com",
-      "pwd": "test2",
-      "username": "test",
-      "group": "Business"
-    },
-    {
-      "id": "ciao-test3",
-      "email": "test@test.com",
-      "pwd": "test2",
-      "username": "test",
-      "group": "Family"
-    },
-    {
-      "id": "ciao",
-      "email": "aos@aos.it",
-      "pwd": "ciao",
-      "username": "ciao",
-      "group": "Business"
-    },
-    {
-      "id": "asd",
-      "email": "dsa@das.it",
-      "pwd": "asd",
-      "username": "asd",
-      "group": "Business"
-    },
-    {
-      "id": "ciao-ciao",
-      "email": "test@test.it",
-      "pwd": "ciao",
-      "username": "ciao",
-      "group": "Personal"
-    },
-    {
-      "id": "e",
-      "email": "e",
-      "pwd": "e",
-      "username": "e",
-      "group": "Personal"
-    },
-    {
-      "id": "ciao-key",
-      "email": "ciao@ciao.it",
-      "pwd": "c96ead30125788f43269f7a52d582747",
-      "username": "ciao",
-      "group": "Business"
-    },
-    {
-      "id": "asd-asd-asd",
-      "email": "asd",
-      "pwd": "40f393a42b915c0ec77b158b6e499c25",
-      "username": "asd",
-      "group": "Business"
-    },
-    {
-      "id": "a-a-a",
-      "email": "a",
-      "pwd": "6bb45d68d208ca4259afb487421a392d",
-      "username": "a",
-      "group": "Business"
     }
   ],
   "groups": [
     "Business",
-    "Personal",
-    "Family"
+    "Personal"
   ]
 }

@@ -14,9 +14,9 @@ const {
   update
 } = require('./logic')
 
-const {
-  createPrompt
-} = require('./prompt')
+const createPrompt = require('./prompt')
+const updatePrompt = require('./updatePrompt')
+const readPrompt = require('./readPrompt')
 
 program
   .version('1.0.0', '-v, --version')
@@ -35,9 +35,11 @@ program
   .action(type => list(type))
 
 program
-  .command('read <nick>')
+  .command('read')
   .description('')
-  .action(nick => read(nick))
+  .action(() => {
+    prompt(readPrompt).then(input => read(input))
+  })
 
 program
   .command('group <name>')
@@ -55,8 +57,10 @@ program
   .action(nick => remove(nick))
 
 program
-  .command('update <nick> <field> <value>')
+  .command('update')
   .description('')
-  .action((nick, field, value) => update(nick, field, value))
+  .action(() => {
+    prompt(updatePrompt).then(input => update(input))
+  })
 
 program.parse(process.argv)

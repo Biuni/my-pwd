@@ -1,10 +1,10 @@
 const colors = require('colors')
 const pwdGen = require('password-generator')
+
 const {
   encrypt,
   decrypt
 } = require('./crypto')
-
 const db = require('./db')
 
 // Create new Record
@@ -23,12 +23,12 @@ const create = (record) => {
         group: record.group
       })
       .write()
-      
+
     process.stdout.write('\033c')
-    console.log(`\n > Password stored!`.bgGreen.white)
+    console.log(`\n > Password stored! `.bgGreen.white)
   } else {
     process.stdout.write('\033c')
-    console.log(`\n > Error, the identifier already exists!`.bgRed.white)
+    console.log(`\n > Error, the identifier already exists! `.bgRed.white)
   }
 }
 
@@ -37,7 +37,7 @@ const list = () => {
   const groups = db.get('groups').value()
   console.log()
   groups.forEach(name => {
-    console.log(` ${name.green}`)
+    console.log(` ${name.green.bold}`)
     let val = db.get('records')
       .filter({ group: name })
       .sortBy('id')
@@ -48,8 +48,31 @@ const list = () => {
   })
 }
 
-const read = () => {
-  console.log('read')
+const read = (record) => {
+  let clearPwd
+  var readPwd = db.get('records')
+    .filter({ id: record.id })
+    .value()
+
+  if (readPwd.length === 0) {
+    console.log(`\n > Wrong identifier! `.bgRed.white)
+  } else {
+    try {
+      clearPwd = decrypt(readPwd[0].pwd, record.key)
+    } catch (err) {
+      clearPwd = false
+    }
+    if (!clearPwd) {
+      console.log(`\n > Wrong decrytion key! `.bgRed.white)
+    } else {
+      console.log()
+      console.log(`Identifier: ${readPwd[0].id.bgGreen.white}`)
+      console.log(`Email: ${readPwd[0].email.bgGreen.white}`)
+      console.log(`Password: ${clearPwd.bgGreen.white}`)
+      console.log(`Username: ${readPwd[0].username.bgGreen.white}`)
+      console.log(`Group: ${readPwd[0].group.bgGreen.white}`)
+    }
+  }
 }
 
 // Create new Group
@@ -57,42 +80,58 @@ const group = (name) => {
   db.get('groups')
     .push(name)
     .write()
-  console.log(`\n > Group created!`.bgGreen.white)
+  console.log(`\n > Group created! `.bgGreen.white)
 }
 
 // Generate a Password
 const generate = (length) => {
-  console.log(`\nThe password is: ${pwdGen(length, false).green}`)
+  console.log(`\n > The password is: ${pwdGen(length, false).black} `.bgGreen.white)
 }
 
 // Delete a Record
 const remove = (nick) => {
-  db.get('records')
+  var deletePwd = db.get('records')
     .remove({ id: nick })
     .write()
+  if (deletePwd.length === 0) {
+    console.log(`\n > Wrong identifier! `.bgRed.white)
+  } else {
+    console.log(`\n > Password deleted! `.bgGreen.white)
+  }
 }
 
 // Update a Record
-const update = (nick, field, value) => {
+const update = (record) => {
   var newField = ((color) => {
-    switch (field) {
+    switch (record.field) {
       case 'email':
-        return { email: value }
+        return { email: record.value }
       case 'pwd':
-        return { pwd: value }
+        return { pwd: encrypt(record.value, record.key) }
       case 'username':
-        return { username: value }
+        return { username: record.value }
       case 'group':
-        return { group: value }
+        return (db.get('groups').value().includes(record.value)) ? { group: record.value } : false
       default:
-        return { id: nick }
+        return { id: record.id }
     }
-  })(field);
+  })(record.field);
 
-  db.get('records')
-    .find({ id: nick })
+  var updateRecord = db.get('records')
+    .find({ id: record.id })
     .assign(newField)
     .write()
+
+  if (!newField) {
+    console.log(`\n > There\'s no group with this name! `.bgRed.white)
+    return
+  }
+  
+  if (updateRecord.id === undefined) {
+    console.log(`\n > Wrong identifier! `.bgRed.white)
+  } else {
+    console.log(`\n > ${record.field.charAt(0).toUpperCase() + record.field.slice(1)} updated! `.bgGreen.white)
+  }
 }
 
 module.exports = {
