@@ -20,11 +20,11 @@ const read = (record) => {
       console.log(`\n > Wrong decryption key! `.bgRed.white)
     } else {
       console.log()
-      console.log(`Identifier: ${readPwd[0].id.bgGreen.white}`)
-      console.log(`Email: ${readPwd[0].email.bgGreen.white}`)
-      console.log(`Password: ${clearPwd.bgGreen.white}`)
-      console.log(`Username: ${readPwd[0].username.bgGreen.white}`)
-      console.log(`Group: ${readPwd[0].group.bgGreen.white}`)
+      console.log(' ~ Identifier '.inverse + '  ' + readPwd[0].id.green)
+      console.log(' ~ Email      '.inverse + '  ' + readPwd[0].email.green)
+      console.log(' ~ Username   '.inverse + '  ' + readPwd[0].username.green)
+      console.log(' ~ Password   '.inverse + '  ' + clearPwd.green)
+      console.log(' ~ Group      '.inverse + '  ' + readPwd[0].group.green)
     }
   }
 }

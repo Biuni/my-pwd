@@ -2,6 +2,7 @@
 
 const program = require('commander')
 const { prompt } = require('inquirer')
+const colors = require('colors')
 
 const create = require('./commands/create')
 const list = require('./commands/list')
@@ -36,6 +37,7 @@ program
   .command('read')
   .description('')
   .action(() => {
+    console.log('> Attention! The password will be show after insert the key.\n  Be careful that no one looks at the screen!'.red)
     prompt(readPrompt).then(input => read(input))
   })
 

@@ -6,11 +6,17 @@
   "author": "Gianluca Bonifazi (http://biuni.it)",
   "license": "MIT",
   "private": false,
+  "scripts": {
+    "lint" : "standard"
+  },
   "dependencies": {
     "colors": "^1.2.4",
     "commander": "^2.15.1",
     "inquirer": "^5.2.0",
     "lowdb": "^1.0.0",
     "password-generator": "^2.2.0"
+  },
+  "devDependencies": {
+    "standard": "^11.0.1"
   }
 }

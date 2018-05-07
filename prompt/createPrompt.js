@@ -4,7 +4,11 @@ const createPrompt = [
   {
     type: 'input',
     name: 'email',
-    message: 'Enter email: '
+    message: 'Enter email: ',
+    validate: (value) => {
+      var valid = value.match(/\S+@\S+\.\S+/)
+      return (valid) ? true : 'Insert a valid mail'
+    }
   },
   {
     type: 'input',
@@ -21,9 +25,9 @@ const createPrompt = [
     type: 'input',
     name: 'id',
     message: 'Enter identifier: ',
-    validate: function (value) {
+    validate: (value) => {
       var valid = !value.match(/\s/)
-      var notEmpty = (value !== '') ? true : false
+      var notEmpty = value !== ''
       if (!notEmpty) {
         return 'This field is required'
       } else if (!valid) {
@@ -44,15 +48,15 @@ const createPrompt = [
     name: 'key',
     mask: '*',
     message: 'Enter an encryption key: ',
-    validate: function (value) {
-      var notEmpty = (value !== '') ? true : false
+    validate: (value) => {
+      var notEmpty = value !== ''
       if (!notEmpty) {
         return 'This field is required'
       } else {
         return true
       }
     }
-  },
+  }
 ]
 
 module.exports = createPrompt

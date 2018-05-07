@@ -10,11 +10,20 @@ const group = (name) => {
 }
 
 const groupRemove = (name) => {
+  if (name === 'Business' || name === 'Personal') {
+    console.log(`\n > Personal and Business groups was settled as default! `.bgRed.white)
+    return
+  }
+  var checkExist = db.get('groups').value()
+  if (!checkExist.includes(name)) {
+    console.log(`\n > There's no group with this name! `.bgRed.white)
+    return
+  }
   const rl = readline.createInterface({
     input: process.stdin,
     output: process.stdout
   })
-  rl.question(`\nAre you sure? (y/n) `, (answer) => {
+  rl.question(`\n > If you remove a group all its elements will be hidden from the list.\n   Are you sure? (y/n) `.red, (answer) => {
     if (answer === 'y' || answer === 'Y') {
       db.get('groups')
         .pull(name)

@@ -16,7 +16,7 @@ const update = (field, record) => {
       default:
         return { id: record.id }
     }
-  })(field);
+  })(field)
 
   var updateRecord = db.get('records')
     .find({ id: record.id })
@@ -24,7 +24,7 @@ const update = (field, record) => {
     .write()
 
   if (!newField) {
-    console.log(`\n > There\'s no group with this name! `.bgRed.white)
+    console.log(`\n > There's no group with this name! `.bgRed.white)
     return
   }
 

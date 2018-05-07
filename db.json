@@ -1,5 +1,20 @@
 {
-  "records": [],
+  "records": [
+    {
+      "id": "example",
+      "email": "example@example.it",
+      "pwd": "4ccad0019fd7db72ba765ffa0980145f",
+      "username": "example",
+      "group": "Business"
+    },
+    {
+      "id": "test",
+      "email": "test@test.it",
+      "pwd": "79caa93da9153f23fe10c7ddf2d8267e",
+      "username": "test",
+      "group": "Business"
+    }
+  ],
   "groups": [
     "Business",
     "Personal"
