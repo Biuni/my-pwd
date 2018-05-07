@@ -1,4 +1,4 @@
-const db = require('./db')
+const db = require('../utils/db')
 
 const createPrompt = [
   {
@@ -12,8 +12,9 @@ const createPrompt = [
     message: 'Enter username: '
   },
   {
-    type: 'input',
+    type: 'password',
     name: 'pwd',
+    mask: '*',
     message: 'Enter password: '
   },
   {
@@ -22,7 +23,14 @@ const createPrompt = [
     message: 'Enter identifier: ',
     validate: function (value) {
       var valid = !value.match(/\s/)
-      return valid || 'No blank space'
+      var notEmpty = (value !== '') ? true : false
+      if (!notEmpty) {
+        return 'This field is required'
+      } else if (!valid) {
+        return 'No blank space'
+      } else if (valid && notEmpty) {
+        return true
+      }
     }
   },
   {
@@ -35,7 +43,15 @@ const createPrompt = [
     type: 'password',
     name: 'key',
     mask: '*',
-    message: 'Enter an encryption key: '
+    message: 'Enter an encryption key: ',
+    validate: function (value) {
+      var notEmpty = (value !== '') ? true : false
+      if (!notEmpty) {
+        return 'This field is required'
+      } else {
+        return true
+      }
+    }
   },
 ]
 

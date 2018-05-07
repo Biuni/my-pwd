@@ -3,20 +3,18 @@
 const program = require('commander')
 const { prompt } = require('inquirer')
 
-const {
-  login,
-  create,
-  list,
-  read,
-  group,
-  generate,
-  remove,
-  update
-} = require('./logic')
+const create = require('./commands/create')
+const list = require('./commands/list')
+const read = require('./commands/read')
+const { group, groupRemove } = require('./commands/group')
+const generate = require('./commands/generate')
+const remove = require('./commands/remove')
+const update = require('./commands/update')
 
-const createPrompt = require('./prompt')
-const updatePrompt = require('./updatePrompt')
-const readPrompt = require('./readPrompt')
+const createPrompt = require('./prompt/createPrompt')
+const updatePrompt = require('./prompt/updatePrompt')
+const updatePwdPrompt = require('./prompt/updatePwdPrompt')
+const readPrompt = require('./prompt/readPrompt')
 
 program
   .version('1.0.0', '-v, --version')
@@ -43,8 +41,11 @@ program
 
 program
   .command('group <name>')
+  .option('--remove', 'Remove group (and its elements will be hidden from the list)')
   .description('')
-  .action(name => group(name))
+  .action((name, options) => {
+    (options.remove) ? groupRemove(name) : group(name)
+  })
 
 program
   .command('generate <length>')
@@ -52,15 +53,16 @@ program
   .action(length => generate(length))
 
 program
-  .command('remove <nick>')
+  .command('remove <id>')
   .description('')
-  .action(nick => remove(nick))
+  .action(id => remove(id))
 
 program
-  .command('update')
+  .command('update <field>')
   .description('')
-  .action(() => {
-    prompt(updatePrompt).then(input => update(input))
+  .action(field => {
+    var promptList = (field === 'pwd') ? updatePwdPrompt : updatePrompt
+    prompt(promptList).then(input => update(field, input))
   })
 
 program.parse(process.argv)

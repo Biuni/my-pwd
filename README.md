@@ -1,8 +1,0 @@
-my-pwd login	  <password>	[ effettua il login ]
-my-pwd create 		      	  [ crea un nuovo record ]
-my-pwd list			            [ vedi tutti i record registrati ]
-my-pwd read 	  <nick>		  [ vedi record registrato ]
-my-pwd group	  <name>		  [ crea un nuovo gruppo ]
-my-pwd generate <length>	  [ genera una password ]
-my-pwd remove 	<nick> 		  [ elimina un record ]
-my-pwd update 	<nik>		    [ modifica il record ]
