@@ -1,4 +1,4 @@
-const colors = require('colors')
+require('colors')
 const pwdGen = require('password-generator')
 
 const generate = (length) => {

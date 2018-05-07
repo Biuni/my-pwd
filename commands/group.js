@@ -1,4 +1,4 @@
-const colors = require('colors')
+require('colors')
 var readline = require('readline')
 const db = require('../utils/db')
 

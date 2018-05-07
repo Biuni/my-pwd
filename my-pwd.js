@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 
+require('colors')
 const program = require('commander')
 const { prompt } = require('inquirer')
-const colors = require('colors')
 
 const create = require('./commands/create')
 const list = require('./commands/list')

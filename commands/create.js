@@ -1,4 +1,4 @@
-const colors = require('colors')
+require('colors')
 const db = require('../utils/db')
 const { encrypt } = require('../utils/crypto')
 
@@ -17,11 +17,8 @@ const create = (record) => {
         group: record.group
       })
       .write()
-
-    process.stdout.write('\033c')
     console.log(`\n > Password stored! `.bgGreen.white)
   } else {
-    process.stdout.write('\033c')
     console.log(`\n > Error, the identifier already exists! `.bgRed.white)
   }
 }

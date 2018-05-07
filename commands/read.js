@@ -1,4 +1,4 @@
-const colors = require('colors')
+require('colors')
 const db = require('../utils/db')
 const { decrypt } = require('../utils/crypto')
 
