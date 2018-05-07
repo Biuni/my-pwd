@@ -1,11 +1,11 @@
 const colors = require('colors')
 const pwdGen = require('password-generator')
+const {
+  encrypt,
+  decrypt
+} = require('./crypto')
 
 const db = require('./db')
-
-const login = (pwd) => {
-  console.log(pwd)
-}
 
 // Create new Record
 const create = (record) => {
@@ -18,14 +18,17 @@ const create = (record) => {
       .push({
         id: record.id,
         email: record.email,
-        pwd: record.pwd,
+        pwd: encrypt(record.pwd, record.key),
         username: record.username,
         group: record.group
       })
       .write()
-      console.log(`\nAll right!`.green)
+      
+    process.stdout.write('\033c')
+    console.log(`\n > Password stored!`.bgGreen.white)
   } else {
-    console.log(`\nError! Change the identifier.!`.red)
+    process.stdout.write('\033c')
+    console.log(`\n > Error, the identifier already exists!`.bgRed.white)
   }
 }
 
@@ -54,6 +57,7 @@ const group = (name) => {
   db.get('groups')
     .push(name)
     .write()
+  console.log(`\n > Group created!`.bgGreen.white)
 }
 
 // Generate a Password
@@ -92,7 +96,6 @@ const update = (nick, field, value) => {
 }
 
 module.exports = {
-  login,
   create,
   list,
   read,

@@ -30,7 +30,12 @@ const createPrompt = [
     name: 'group',
     message: 'Enter group: ',
     choices: db.get('groups').value()
-  }
+  },
+  {
+    type: 'input',
+    name: 'key',
+    message: 'Enter an encryption key: '
+  },
 ]
 
 module.exports = {

@@ -23,11 +23,6 @@ program
   .description('Easy and secure way to store your password.')
 
 program
-  .command('login <password>')
-  .description('')
-  .action(pwd => login(pwd))
-
-program
   .command('create')
   .description('')
   .action(() => {
