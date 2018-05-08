@@ -19,49 +19,49 @@ const readPrompt = require('./prompt/readPrompt')
 
 program
   .version('1.0.0', '-v, --version')
-  .description('Easy and secure way to store your password.')
+  .description('Easy and secure way to store and manage your passwords.')
 
 program
-  .command('create')
-  .description('')
+  .command('new')
+  .description('Store credentials into safely place.')
   .action(() => {
     prompt(createPrompt).then(input => create(input))
   })
 
 program
   .command('list')
-  .description('')
+  .description('Show all records stored.')
   .action(type => list(type))
 
 program
   .command('read')
-  .description('')
+  .description('Read the password of a stored record.')
   .action(() => {
-    console.log('> Attention! The password will be show after insert the key.\n  Be careful that no one looks at the screen!'.red)
+    console.log('> Attention! The password will be show after insert the key.\n  Be careful that no one looks at the screen!'.yellow)
     prompt(readPrompt).then(input => read(input))
   })
 
 program
   .command('group <name>')
   .option('--remove', 'Remove group (and its elements will be hidden from the list)')
-  .description('')
+  .description('Create a new group. Use [ my-pwd --remove <name> ] to remove one.')
   .action((name, options) => {
     (options.remove) ? groupRemove(name) : group(name)
   })
 
 program
   .command('generate <length>')
-  .description('')
+  .description('Generate a secure password on your device.')
   .action(length => generate(length))
 
 program
   .command('remove <id>')
-  .description('')
+  .description('Remove a record.')
   .action(id => remove(id))
 
 program
   .command('update <field>')
-  .description('')
+  .description('Update a field. You can update: email, pwd, username, group. Example [ my-pwd update pwd ]')
   .action(field => {
     var promptList = (field === 'pwd') ? updatePwdPrompt : updatePrompt
     prompt(promptList).then(input => update(field, input))

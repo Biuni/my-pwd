@@ -1,8 +1,13 @@
 require('colors')
-var readline = require('readline')
+const readline = require('readline')
 const db = require('../utils/db')
 
 const group = (name) => {
+  var checkExist = db.get('groups').value()
+  if (checkExist.includes(name)) {
+    console.log(`\n > A group with this name already exist! `.bgRed.white)
+    return
+  }
   db.get('groups')
     .push(name)
     .write()

@@ -1,14 +1,19 @@
 {
   "name": "my-pwd",
   "version": "1.0.0",
-  "description": "Easy and secure way to store your password.",
+  "description": "Easy and secure way to store and manage your passwords.",
   "bin": "src/my-pwd.js",
   "main": "src/no-main.js",
   "author": "Gianluca Bonifazi (http://biuni.it)",
   "license": "MIT",
-  "private": false,
   "scripts": {
-    "lint": "standard && prettier \"src/**/*.js\" --list-different"
+    "lint": "standard",
+    "test": "jest"
+  },
+  "standard": {
+    "env": [
+      "jest"
+    ]
   },
   "dependencies": {
     "colors": "^1.2.4",
@@ -18,12 +23,14 @@
     "password-generator": "^2.2.0"
   },
   "devDependencies": {
-    "prettier": "^1.12.1",
+    "jest": "^22.4.3",
     "standard": "^11.0.1"
   },
   "keywords": [
     "password",
     "manager",
-    "pwd"
+    "pwd",
+    "encryption",
+    "cli"
   ]
 }
