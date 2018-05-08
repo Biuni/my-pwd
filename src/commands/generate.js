@@ -1,8 +1,12 @@
 require('colors')
 const pwdGen = require('password-generator')
+const clipboardy = require('clipboardy')
 
 const generate = (length) => {
-  console.log(`\n > The password is: ${pwdGen(length, false).black} `.bgGreen.white)
+  var newPwd = pwdGen(length, false)
+  clipboardy.writeSync(newPwd)
+  console.log(`\n > The password is: ${newPwd.black} `.bgGreen.white)
+  console.log('\n > Password copied to clipboard!'.yellow)
 }
 
 module.exports = generate

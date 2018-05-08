@@ -35,16 +35,17 @@ program
 
 program
   .command('read')
-  .description('Read the password of a stored record.')
-  .action(() => {
-    console.log('> Attention! The password will be show after insert the key.\n  Be careful that no one looks at the screen!'.yellow)
-    prompt(readPrompt).then(input => read(input))
+  .description('Copy to clipboard the password of a stored record. Use "--show" if you want to view the password in the console.')
+  .option('--show', 'Show the password in the console.')
+  .action(options => {
+    console.log((options.show) ? '> Attention! The password will be show after insert the key.\n  Be careful that no one looks at the screen!\n'.yellow : '')
+    prompt(readPrompt).then(input => read(input, options.show))
   })
 
 program
   .command('group <name>')
   .option('--remove', 'Remove group (and its elements will be hidden from the list)')
-  .description('Create a new group. Use [ my-pwd --remove <name> ] to remove one.')
+  .description('Create a new group. Use "--remove" to remove one.')
   .action((name, options) => {
     (options.remove) ? groupRemove(name) : group(name)
   })
@@ -61,7 +62,7 @@ program
 
 program
   .command('update <field>')
-  .description('Update a field. You can update: email, pwd, username, group. Example [ my-pwd update pwd ]')
+  .description('Update a field. You can use: email, pwd, username, group. Example: "my-pwd update pwd"')
   .action(field => {
     var promptList = (field === 'pwd') ? updatePwdPrompt : updatePrompt
     prompt(promptList).then(input => update(field, input))

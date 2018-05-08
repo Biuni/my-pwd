@@ -31,6 +31,7 @@
     ]
   },
   "dependencies": {
+    "clipboardy": "^1.2.3",
     "colors": "^1.2.4",
     "commander": "^2.15.1",
     "inquirer": "^5.2.0",
