@@ -2,7 +2,7 @@ require('colors')
 const readline = require('readline')
 const db = require('../utils/db')
 
-const remove = (nick) => {
+const remove = (identifier) => {
   const rl = readline.createInterface({
     input: process.stdin,
     output: process.stdout
@@ -10,7 +10,7 @@ const remove = (nick) => {
   rl.question(`\n > If you remove a password there are no way to restore it.\n   Are you sure? (y/n) `.red, (answer) => {
     if (answer === 'y' || answer === 'Y') {
       var deletePwd = db.get('records')
-        .remove({ id: nick })
+        .remove({ id: identifier })
         .write()
       if (deletePwd.length === 0) {
         console.log(`\n > Wrong identifier! `.bgRed.white)

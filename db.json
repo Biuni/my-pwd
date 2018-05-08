@@ -6,13 +6,6 @@
       "pwd": "36a55963a9880a361db8af5d1b3ae049",
       "username": "example",
       "group": "Business"
-    },
-    {
-      "id": "test",
-      "email": "test@test.it",
-      "pwd": "79caa93da9153f23fe10c7ddf2d8267e",
-      "username": "test",
-      "group": "Business"
     }
   ],
   "groups": [

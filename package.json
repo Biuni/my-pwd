@@ -2,9 +2,24 @@
   "name": "my-pwd",
   "version": "1.0.0",
   "description": "Easy and secure way to store and manage your passwords.",
+  "keywords": [
+    "password",
+    "manager",
+    "pwd",
+    "encryption",
+    "cli"
+  ],
+  "homepage": "https://github.com/Biuni/my-pwd#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Biuni/my-pwd"
+  },
+  "bugs": {
+    "url": "https://github.com/Biuni/my-pwd/issues"
+  },
+  "author": "Gianluca Bonifazi (http://biuni.it)",
   "bin": "src/my-pwd.js",
   "main": "src/no-main.js",
-  "author": "Gianluca Bonifazi (http://biuni.it)",
   "license": "MIT",
   "scripts": {
     "lint": "standard",
@@ -26,11 +41,7 @@
     "jest": "^22.4.3",
     "standard": "^11.0.1"
   },
-  "keywords": [
-    "password",
-    "manager",
-    "pwd",
-    "encryption",
-    "cli"
-  ]
+  "engines": {
+    "node": ">=6.5.0"
+  }
 }

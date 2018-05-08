@@ -1,5 +1,6 @@
 ### Todo List
   - [ Insert all text in a JSON ]
+  - my-pwd read [ Add copy to clipboard password ]
   - [ Add description to all command ]
   - [ Check all text ]
   - [ Create a valid README, with stats and  ]
