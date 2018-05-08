@@ -15,7 +15,7 @@ const remove = (identifier) => {
       if (deletePwd.length === 0) {
         console.log(`\n > Wrong identifier! `.bgRed.white)
       } else {
-        console.log(`\n > Password deleted! `.bgGreen.white)
+        console.log(`\n > Password deleted! `.bgGreen.black)
       }
       rl.close()
     } else {

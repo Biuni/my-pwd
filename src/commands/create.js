@@ -17,7 +17,7 @@ const create = (record) => {
         group: record.group
       })
       .write()
-    console.log(`\n > Password stored! `.bgGreen.white)
+    console.log(`\n > Password stored! `.bgGreen.black)
   } else {
     console.log(`\n > Error, the identifier already exists! `.bgRed.white)
   }

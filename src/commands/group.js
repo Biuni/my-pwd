@@ -11,7 +11,7 @@ const group = (name) => {
   db.get('groups')
     .push(name)
     .write()
-  console.log(`\n > Group created! `.bgGreen.white)
+  console.log(`\n > Group created! `.bgGreen.black)
 }
 
 const groupRemove = (name) => {
@@ -33,7 +33,7 @@ const groupRemove = (name) => {
       db.get('groups')
         .pull(name)
         .write()
-      console.log(`\n > Group deleted! `.bgGreen.white)
+      console.log(`\n > Group deleted! `.bgGreen.black)
       rl.close()
     } else {
       console.log(`\n > Deleting aborted! `.bgRed.white)

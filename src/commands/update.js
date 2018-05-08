@@ -31,7 +31,7 @@ const update = (field, record) => {
   if (updateRecord.id === undefined) {
     console.log(`\n > Wrong identifier! `.bgRed.white)
   } else {
-    console.log(`\n > ${field.charAt(0).toUpperCase() + field.slice(1)} updated! `.bgGreen.white)
+    console.log(`\n > ${field.charAt(0).toUpperCase() + field.slice(1)} updated! `.bgGreen.black)
   }
 }
 
