@@ -35,7 +35,7 @@ program
 
 program
   .command('read')
-  .description('Copy to clipboard the password of a stored record. Use "--show" if you want to view the password in the console.')
+  .description('Copy the password of a stored record. Use "--show" if you want to view the password.')
   .option('--show', 'Show the password in the console.')
   .action(options => {
     console.log((options.show) ? '> Attention! The password will be show after insert the key.\n  Be careful that no one looks at the screen!\n'.yellow : '')
