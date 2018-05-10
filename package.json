@@ -1,7 +1,7 @@
 {
   "name": "my-pwd",
-  "version": "1.0.2",
-  "description": "Easy and secure way to store and manage your passwords.",
+  "version": "1.0.3",
+  "description": "Easy and secure CLI to store and manage your passwords.",
   "keywords": [
     "password",
     "manager",

@@ -17,9 +17,11 @@ const updatePrompt = require('./prompt/updatePrompt')
 const updatePwdPrompt = require('./prompt/updatePwdPrompt')
 const readPrompt = require('./prompt/readPrompt')
 
+const version = require('../package.json').version
+
 program
-  .version('1.0.0', '-v, --version')
-  .description('Easy and secure way to store and manage your passwords.')
+  .version(version, '-v, --version')
+  .description('Easy and secure CLI to store and manage your passwords.')
 
 program
   .command('new')
@@ -56,9 +58,9 @@ program
   .action(length => generate(length))
 
 program
-  .command('remove <id>')
+  .command('remove <identifier>')
   .description('Remove a record.')
-  .action(id => remove(id))
+  .action(identifier => remove(identifier))
 
 program
   .command('update <field>')
