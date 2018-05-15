@@ -11,6 +11,7 @@ const { group, groupRemove } = require('./commands/group')
 const generate = require('./commands/generate')
 const remove = require('./commands/remove')
 const update = require('./commands/update')
+const exportDb = require('./commands/export')
 
 const createPrompt = require('./prompt/createPrompt')
 const updatePrompt = require('./prompt/updatePrompt')
@@ -69,5 +70,10 @@ program
     var promptList = (field === 'pwd') ? updatePwdPrompt : updatePrompt
     prompt(promptList).then(input => update(field, input))
   })
+
+program
+  .command('export')
+  .description('Exports the JSON file containing the database')
+  .action(type => exportDb(type))
 
 program.parse(process.argv)
