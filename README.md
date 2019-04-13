@@ -1,8 +1,8 @@
 # :lock: my-pwd
 [![Dependency](https://david-dm.org/Biuni/my-pwd.svg)](https://david-dm.org/Biuni/my-pwd)
 [![DevDependecy](https://david-dm.org/Biuni/my-pwd/dev-status.svg)](https://david-dm.org/Biuni/my-pwd?type=dev)
-[![Downloads](https://www.npmjs.com/package/my-pwd)](https://img.shields.io/npm/dt/my-pwd.svg)
-[![License](https://github.com/Biuni/my-pwd/blob/master/LICENSE)](https://img.shields.io/npm/l/my-pwd.svg)
+[![Downloads](https://img.shields.io/npm/dt/my-pwd.svg)](https://www.npmjs.com/package/my-pwd)
+[![License](https://img.shields.io/npm/l/my-pwd.svg)](https://github.com/Biuni/my-pwd/blob/master/LICENSE)
 
 Easy and secure CLI to store and manage your passwords.
 
